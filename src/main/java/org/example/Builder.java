@@ -1,35 +1,41 @@
 package org.example;
 
 public final class Builder {
-    private Builder() {
-    }
+    private Builder() {}
 
-    public static String reverse(String var0) {
-        return var0 == null ? "" : (new StringBuilder(var0)).reverse().toString();
-    }
+    public static String capitalizeWords(String input) {
+        if (input == null || input.isBlank()) return input;
 
-    public static String capitalizeWords(String var0) {
-        if (var0 != null && !var0.isBlank()) {
-            String[] var1 = var0.split("\\s+");
-            StringBuilder var2 = new StringBuilder();
+        String[] words = input.split("\\s+");
+        StringBuilder sb = new StringBuilder();
 
-            for(String var6 : var1) {
-                if (!var6.isEmpty()) {
-                    var2.append(Character.toUpperCase(var6.charAt(0)))
-                            .append(var6.substring(1).toLowerCase())
-                            .append(' ');
-                }
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                sb.append(word.toUpperCase()).append(' ');
             }
-
-            return var2.toString().trim();
-        } else {
-            return var0;
         }
+
+        return sb.toString().trim();
     }
 
-    // ADD THIS MAIN METHOD FOR RUNNABLE JAR
+    public static int countWords(String input) {
+        if (input == null || input.isBlank()) return 0;
+        return input.trim().split("\\s+").length;
+    }
+
+    public static String repeat(String word, int times) {
+        if (word == null || times <= 0) return "";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < times; i++) {
+            sb.append(word);
+            if (i < times - 1) sb.append(' ');
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
-        System.out.println("Reverse 'library': " + reverse("library"));
-        System.out.println("Capitalize 'java library': " + capitalizeWords("java library"));
+        System.out.println("Capitalized: " + Builder.capitalizeWords("library"));
+        System.out.println("Word count: " + Builder.countWords("java library to develop"));
+        System.out.println("Repeat word: " + Builder.repeat("builder", 5));
     }
 }
