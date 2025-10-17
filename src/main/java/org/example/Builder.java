@@ -36,6 +36,6 @@ public final class Builder {
     public static void main(String[] args) {
         System.out.println("Capitalized: " + Builder.capitalizeWords("library"));
         System.out.println("Word count: " + Builder.countWords("java library to develop"));
-        System.out.println("Repeat word: " + Builder.repeat("builder", 5));
+        System.out.println("Repeat sentence: " + Builder.repeat("Welcome to my library!", 3));
     }
 }
